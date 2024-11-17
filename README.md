@@ -26,6 +26,22 @@ npm install
 npm install -g react-native-cli
 
 
-# Start the application
+# Start the application in android
 npx react-native run-android
+# Start the application in IOS
+npx react-native run-ios
+
 ```
+
+## Dependencies
+
+The application relies on several npm packages:
+React
+React Native
+AsyncStorage from React Native
+Ensure all dependencies are installed as defined in the project's package.json file
+
+## Project Structure
+
+- **App.js:** Contains the main application logic.
+- **package.json:** Defines the project's npm dependencies and scripts.

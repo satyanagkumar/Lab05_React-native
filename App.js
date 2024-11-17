@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function App() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
-  const animations = useRef(new Map()).current;  // Store animations for each task
+  const animations = useRef(new Map()).current;
   const [editText, setEditText] = useState('');
   const [editId, setEditId] = useState(null);
 
@@ -43,12 +43,12 @@ export default function App() {
   const addTask = () => {
     if (task.trim()) {
       const newTask = { id: Date.now().toString(), text: task, completed: false };
-      animations[newTask.id] = new Animated.Value(0); // Initialize animation value for opacity
+      animations[newTask.id] = new Animated.Value(0);
       setTasks(prevTasks => [...prevTasks, newTask]);
       Animated.timing(animations[newTask.id], {
         toValue: 1,
         duration: 300,
-        useNativeDriver: true, // Safe to use with opacity
+        useNativeDriver: true,
       }).start();
       setTask('');
     }
@@ -58,7 +58,7 @@ export default function App() {
     Animated.timing(animations[taskId], {
       toValue: 0,
       duration: 300,
-      useNativeDriver: true, // Again, safe with opacity
+      useNativeDriver: true,
     }).start(() => {
       setTasks(prevTasks => prevTasks.filter(t => t.id !== taskId));
       delete animations[taskId];
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   },
   completedText: {
     textDecorationLine: 'line-through',
-    color: '#aaa', // Light grey color to signify completion
+    color: '#aaa',
   },
   deleteButton: {
     color: '#FF5C5C',
